@@ -28,6 +28,14 @@ app.get("/recipes", (req, res) => {
   res.send(recipesData);
 });
 
+app.get("/recipes/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+
+  const selectedRecipes = recipesData.filter((n) => n.chef_id === id);
+
+  res.send(selectedRecipes);
+});
+
 app.listen(port, () => {
   console.log("Your server is running in port: ", port);
 });
