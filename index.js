@@ -15,3 +15,11 @@ app.get("/", (req, res) => {
 app.get("/chefs", (req, res) => {
   res.send(chefData);
 });
+
+app.get("/chef/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+
+  const selectedRecipes = chefData.find((n) => n.id === id);
+
+  res.send(selectedRecipes);
+});
