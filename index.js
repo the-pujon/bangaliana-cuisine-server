@@ -23,3 +23,11 @@ app.get("/chef/:id", (req, res) => {
 
   res.send(selectedRecipes);
 });
+
+app.get("/recipes", (req, res) => {
+  res.send(recipesData);
+});
+
+app.listen(port, () => {
+  console.log("Your server is running in port: ", port);
+});
