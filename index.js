@@ -1,41 +1,87 @@
+//const express = require("express");
+//const app = express();
+//const port = 5000;
+//const cors = require("cors");
+////const chef = require("./data/chef.json");
+////const recipes = require("./data/recipes.json");
+//const chef = require("./data/chef.json");
+//const recipes = require("./data/recipes.json");
+
+//app.use(cors());
+
+////recipes server homepage
+//app.get("/", (req, res) => {
+//  res.send("The recipes data");
+//});
+
+////for chefs
+//app.get("/chefs", (req, res) => {
+//  res.send(chefs);
+//});
+
+////for getting recipes by category
+//app.get("/chefs/:id", (req, res) => {
+//  const categoryId = req.params.id;
+
+//  const categoryrecipes = chefs.find((n) => n.id === categoryId);
+//  res.send(categoryrecipes);
+//});
+
+////for all recipes
+//app.get("/recipes", (req, res) => {
+//  res.send(recipes);
+//});
+
+////for getting recipes by id
+//app.get("/recipes/:id", (req, res) => {
+//  const recipesId = req.params.id;
+//  const selectedrecipes = recipes.filter((n) => n.chef_id === recipesId);
+//  res.send(selectedrecipes);
+//});
+
+//app.listen(port, () => {
+//  console.log("server is running in port: ", port);
+//});
+
 const express = require("express");
 const app = express();
 const port = 5000;
 const cors = require("cors");
-
-const chefData = require("./data/chef.json");
-const recipesData = require("./data/recipes.json");
+const chefs = require("./data/chef.json");
+const recipes = require("./data/recipes.json");
 
 app.use(cors());
 
+//recipes server homepage
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("The recipes data");
 });
 
+//for chefs
 app.get("/chefs", (req, res) => {
-  res.send(chefData);
+  res.send(chefs);
 });
 
+//for getting recipes by category
 app.get("/chef/:id", (req, res) => {
-  const id = parseInt(req.params.id);
+  const categoryId = req.params.id;
 
-  const selectedRecipes = chefData.find((n) => n.id === id);
-
-  res.send(selectedRecipes);
+  const categoryrecipes = chefs.find((n) => n.id === categoryId);
+  res.send(categoryrecipes);
 });
 
+//for all recipes
 app.get("/recipes", (req, res) => {
-  res.send(recipesData);
+  res.send(recipes);
 });
 
+//for getting recipes by id
 app.get("/recipes/:id", (req, res) => {
-  const id = parseInt(req.params.id);
-
-  const selectedRecipes = recipesData.filter((n) => n.chef_id === id);
-
-  res.send(selectedRecipes);
+  const recipesId = req.params.id;
+  const selectedrecipes = recipes.filter((n) => n.chef_id === recipesId);
+  res.send(selectedrecipes);
 });
 
 app.listen(port, () => {
-  console.log("Your server is running in port: ", port);
+  console.log("server is running in port: ", port);
 });
